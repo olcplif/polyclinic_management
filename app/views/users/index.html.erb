@@ -1,0 +1,34 @@
+<div style="color: green"><%= notice %></div>
+
+<h1>Patients</h1>
+
+<%= link_to "New patients", new_user_path %>
+
+<table class="table-body">
+  <thead>
+    <tr>
+      <th class="table-head-cell">First name</th>
+      <th class="table-head-cell">Last name</th>
+      <th class="table-head-cell">Phone number</th>
+      <th class="table-head-cell">Email</th>
+      <th class="table-head-cell">Functions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td class="table-body-cell"><%= user.first_name %></td>
+        <td class="table-body-cell"><%= user.last_name %></td>
+        <td class="table-body-cell"><%= user.phone_number %></td>
+        <td class="table-body-cell"><%= user.email %></td>
+        <td class="table-body-cell">
+          <%= link_to fa_icon('eye', text: "View"), user_path(user), class: "button-functions" %>
+          <%= link_to fa_icon('edit', text: "Edit"), edit_user_path(user), class: "button-functions" %>
+          <%= link_to fa_icon('trash', text: "Destroy"), user_path(user), data: { turbo_method: :delete,
+                    turbo_confirm: "Are you sure?" }, class: 'button-functions' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
