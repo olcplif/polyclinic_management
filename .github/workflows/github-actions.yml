@@ -12,8 +12,10 @@ jobs:
         image: postgres:12.7
         env:
           POSTGRES_DB: test
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          # POSTGRES_USER: postgres
+          # POSTGRES_PASSWORD: postgres
+          username: postgres
+          password: postgres
         ports: ['5432:5432']
         options:
           --health-cmd pg_isready
@@ -50,7 +52,8 @@ jobs:
           # POSTGRES_USER: postgres
           # POSTGRES_PASSWORD: postgres
           # PGHOST: localhost
-          PGUSER: postgres
+          username: postgres
+          password: postgres
         run: |
           bin/rails db:setup
           RAILS_ENV=test bundle exec rspec
