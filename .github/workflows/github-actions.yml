@@ -4,6 +4,7 @@ env:
   POSTGRES_PASSWORD: postgres
   POSTGRES_DB: test
   PG_HOST: localhost
+  PG_PORT: 5432
   # DEVISE_JWT_SECRET_KEY: ${{ secrets.DEVISE_JWT_SECRET_KEY }}
 
 name: Rails Specs
