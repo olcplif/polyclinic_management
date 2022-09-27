@@ -44,15 +44,12 @@ jobs:
           yarn install
       - name: Build and run test
         env:
-          DATABASE_URL: postgres://postgres@localhost:5432/polyclinic_management_test
+          DATABASE_URL: postgres://postgres:@localhost:5432/test
           RAILS_ENV: test
-          HOST: localhost
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
         run: |
-          bundle exec rake
           bin/rails db:setup
-          rake db:migrate RAILS_ENV=test
           RAILS_ENV=test bundle exec rspec
       - name: Formatting and Security Checks
         run: |
