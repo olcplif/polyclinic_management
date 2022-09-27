@@ -11,8 +11,8 @@ jobs:
       postgres:
         image: postgres:11
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: <%= Rails.application.credentials.dig(:database, :username) %>
+          POSTGRES_PASSWORD: <%= Rails.application.credentials.dig(:database, :password) %>
         ports: ['5432:5432']
         options:
           --health-cmd pg_isready
@@ -44,7 +44,7 @@ jobs:
           yarn install
       - name: Build and run test
         env:
-          DATABASE_URL: postgres://postgres:postgres@localhost:5432/test
+          DATABASE_URL: postgres://postgres:@localhost:5432/test
           RAILS_ENV: test
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
