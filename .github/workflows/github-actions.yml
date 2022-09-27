@@ -51,6 +51,7 @@ jobs:
         run: |
           bundle exec rake
           bin/rails db:setup
+          rake db:migrate RAILS_ENV=test
           RAILS_ENV=test bundle exec rspec
       - name: Formatting and Security Checks
         run: |
