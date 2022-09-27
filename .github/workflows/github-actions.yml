@@ -1,66 +1,44 @@
-name: GitHub Actions for Ruby
-on:
-  push:
-    branches: [main, staging]
-  pull_request:
-    branches: [main, staging]
+env:
+  RUBY_VERSION: 3.1.2
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_DB: test
+  # DEVISE_JWT_SECRET_KEY: ${{ secrets.DEVISE_JWT_SECRET_KEY }}
+
+name: Rails Specs
+on: [push,pull_request]
 jobs:
-  test:
-    runs-on: ubuntu-latest
+  rspec-test:
+    name: RSpec
+    runs-on: ubuntu-20.04
     services:
       postgres:
-        image: postgres:12.7
+        image: postgres:latest
+        ports:
+        - 5432:5432
         env:
-          POSTGRES_DB: test
-          # POSTGRES_USER: postgres
-          # POSTGRES_PASSWORD: postgres
-          username: postgres
-          password: postgres
-        ports: ['5432:5432']
-        options:
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup Ruby
-        uses: actions/setup-ruby@v1
+      - uses: actions/checkout@v1
+      - uses: actions/setup-ruby@v1
         with:
           ruby-version: 3.1.2
-      - name: Install PostgreSQL 12 client
+      - name: Install postgres client
+        run: sudo apt-get install libpq-dev
+      - name: Install dependencies
         run: |
-          sudo apt-get -yqq install libpq-dev
-      - name: Cache Ruby Gems
-        uses: actions/cache@v2
+          gem install bundler
+          bundler install
+      - name: Create database
+        run: |
+          bundler exec rails db:create RAILS_ENV=test
+          bundler exec rails db:migrate RAILS_ENV=test
+      - name: Run tests
+        run: bundler exec rspec spec/*
+      - name: Upload coverage results
+        uses: actions/upload-artifact@master
+        if: always()
         with:
-          path: vendor/bundle
-          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-gems-
-      - name: Bundle Install
-        run: |
-          bundle config path vendor/bundle
-          bundle install --jobs 4 --retry 3
-      - name: Install yarn
-        run: |
-          yarn install
-      - name: Build and run test
-        env:
-          DATABASE_URL: postgres://postgres:@localhost:5432/test
-          RAILS_ENV: test
-          # POSTGRES_USER: postgres
-          # POSTGRES_PASSWORD: postgres
-          # PGHOST: localhost
-          username: postgres
-          password: postgres
-        run: |
-          bin/rails db:setup
-          RAILS_ENV=test bundle exec rspec
-      - name: Formatting and Security Checks
-        run: |
-          gem install bundle-audit
-          bundle-audit update
-          bundle-audit
-          bundle exec rubocop
-          bundle exec brakeman -z
+          name: coverage-report
+          path: coverage
