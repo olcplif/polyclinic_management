@@ -22,9 +22,9 @@
         <td class="table-body-cell"><%= user.phone_number %></td>
         <td class="table-body-cell"><%= user.email %></td>
         <td class="table-body-cell">
-          <%= link_to fa_icon('eye', text: "View"), user_path(user), class: "button-functions" %>
-          <%= link_to fa_icon('edit', text: "Edit"), edit_user_path(user), class: "button-functions" %>
-          <%= link_to fa_icon('trash', text: "Destroy"), user_path(user), data: { turbo_method: :delete,
+          <%= link_to icon('fa-regular', 'eye', "View"), user_path(user), class: "button-functions" %>
+          <%= link_to icon('fa-regular', 'edit', "Edit"), edit_user_path(user), class: "button-functions" %>
+          <%= link_to icon('fa-regular', 'trash-can', "Destroy"), user_path(user), data: { turbo_method: :delete,
                     turbo_confirm: "Are you sure?" }, class: 'button-functions' %>
         </td>
       </tr>

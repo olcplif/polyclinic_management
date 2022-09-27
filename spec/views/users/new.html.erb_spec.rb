@@ -5,8 +5,8 @@ require 'rails_helper'
 RSpec.describe 'users/new', type: :view do
   before(:each) do
     assign(:user, User.new(
-                    phone_number: 'MyString',
-                    email: 'MyString',
+                    phone_number: '+380123456789',
+                    email: 'user@example.com',
                     first_name: 'MyString',
                     last_name: 'MyString'
                   ))
