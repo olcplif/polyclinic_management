@@ -22,6 +22,7 @@ RSpec.describe User, type: :model do
 
     context 'first_name and last_name' do
       %i[first_name last_name].each do |field|
+        it { expect(subject).to validate_presence_of(field) }
         it { expect(subject).to validate_length_of(field).is_at_least(3).is_at_most(100) }
       end
     end

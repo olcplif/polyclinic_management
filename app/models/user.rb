@@ -18,5 +18,6 @@ class User < ApplicationRecord
                     # format: Devise.email_regexp,
                     format: { with: URI::MailTo::EMAIL_REGEXP }
 
-  validates :first_name, :last_name, allow_blank: true, length: { minimum: 3, maximum: 100 }
+  validates :first_name, :last_name, presence: true,
+                                     length: { minimum: 3, maximum: 100 }
 end
