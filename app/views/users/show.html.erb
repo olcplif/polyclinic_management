@@ -1,0 +1,10 @@
+<div style="color: green"><%= notice %></div>
+<div class='about-user-group'>
+  <div class="user-info"><%= render @user %></div>
+  <div class="buttons-group">
+    <%= link_to icon('fa-regular', 'edit', "Edit this patient"), edit_user_path(@user), class: "button-icon" %>
+    <%= link_to icon('fa-regular', 'trash-can', "Destroy this patient"), user_path(@user), data: { turbo_method: :delete,
+                        turbo_confirm: "Are you sure?" }, class: 'button-icon' %>
+    <%= link_to icon('fa-solid', 'arrow-left', "Back to patients"), users_path, class: "button-icon" %>
+  </div>
+</div>

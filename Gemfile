@@ -8,8 +8,9 @@ ruby '3.1.2'
 gem 'rails', '~> 7.0.4'
 
 gem 'bootsnap', '~> 1.13', require: false
+gem 'factory_bot_rails', '~> 6.2.0'
+gem 'font-awesome-sass', '~> 6.2.0'
 gem 'importmap-rails', '~> 1.1'
-gem 'jbuilder', '~> 2.11'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'sassc-rails', '~> 2.1.2'
@@ -36,6 +37,9 @@ end
 
 group :test do
   gem 'capybara', '~> 3.37.1'
+  gem 'database_cleaner', '~> 2.0.1'
   gem 'selenium-webdriver', '~> 4.4'
+  gem 'shoulda-matchers', '~> 5.2.0', require: false
+  gem 'simplecov', '~> 0.21.2', require: false
   gem 'webdrivers', '~> 5.1'
 end
