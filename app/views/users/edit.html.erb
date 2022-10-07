@@ -1,8 +1,12 @@
-<h1>Editing patient</h1>
+<div class="page-title-group">
+  <h1 class="page-title">Editing patient</h1>
+</div>
 
-<%= render "form", user: @user %>
+<div class="form-user-group">
+  <%= render "form", user: @user %>
 
-<div>
-  <%= link_to "Show this patient", @user %> |
-  <%= link_to "Back to patients", users_path %>
+  <div class="buttons-group">
+    <%= link_to icon('fa-regular', 'eye', "Show this patient"), user_path(@user), class: "button-icon" %>
+    <%= link_to icon('fa-solid', 'arrow-left', "Back to patients"), users_path, class: "button-icon" %>
+  </div>
 </div>

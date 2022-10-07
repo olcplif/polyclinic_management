@@ -1,0 +1,70 @@
+abbr {
+  display: none;
+}
+
+.form-user-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 20px;
+  border: 2px solid $base-color;
+  box-shadow: 0px 8px 16px 0px $gray-color;
+
+  .edit_user, .new_user {
+    width: 70%;
+  }
+}
+
+.error_notification {
+  color: $red-color;
+}
+
+.form-inputs {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+
+  .input {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+    .form-label {
+      display: block;
+      color: $blue-color;
+    }
+
+    .form-input {
+      background-color: transparent;
+      border: none;
+      border-bottom: 1px solid $dark-gray-color;
+      outline: none;
+      width: 100%;
+      margin: 0 0 10px 0;
+      padding: 0;
+      box-shadow: none;
+      box-sizing: content-box;
+
+      &:focus {
+        border-bottom: 1px solid $base-color;
+        box-shadow: 0 1px 0 0 $base-color;
+      }
+    }
+
+    .form-input-error {
+      color: $red-color;
+      font-size: 16px;
+    }
+  }
+}
+
+.form-actions {
+  display: flex;
+  justify-content: center;
+
+  .form-btn {
+    border: 0;
+  }
+}

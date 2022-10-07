@@ -1,0 +1,37 @@
+.about-user-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 0 auto;
+  max-width: 900px;
+  padding: 20px 40px;
+  border: 2px solid $base-color;
+  box-shadow: 0px 8px 16px 0px $gray-color;
+
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 65%;
+  }
+}
+
+.buttons-group {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 35%;
+  padding: 40px;
+
+  .button-icon {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    margin: 10px 0;
+
+    i {
+      padding-right: 5px;
+    }
+  }
+}

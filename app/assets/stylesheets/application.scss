@@ -1,1 +1,57 @@
 @import "font-awesome";
+@import 'fonts';
+@import 'colors';
+@import "users/*";
+
+@font-face {
+  font-family: 'Gotham';
+  src: font-url('Gotham.ttf');
+  font-family: 'GothamCyrillic';
+  src: font-url('GothamCyrillic.otf');
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: "Gotham", "GothamCyrillic";
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 90%;
+}

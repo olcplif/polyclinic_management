@@ -4,13 +4,24 @@
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
   <div class="form-inputs">
-    <%= f.input :phone_number %>
-    <%= f.input :email %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
+    <%= f.input :phone_number, autofocus: true,
+                               label_html: { class: "form-label" },
+                               placeholder: '+380123456789',
+                               input_html: { class: "form-input" },
+                               error_html: { class: "form-input-error" } %>
+    <%= f.input :email, label_html: { class: "form-label" },
+                        placeholder: 'user@example.com',
+                        input_html: { class: "form-input" },
+                        error_html: { class: "form-input-error" } %>
+    <%= f.input :first_name, label_html: { class: "form-label" },
+                             input_html: { class: "form-input" },
+                             error_html: { class: "form-input-error" } %>
+    <%= f.input :last_name, label_html: { class: "form-label" },
+                            input_html: { class: "form-input" },
+                            error_html: { class: "form-input-error" } %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, class: "button form-btn" %>
   </div>
 <% end %>

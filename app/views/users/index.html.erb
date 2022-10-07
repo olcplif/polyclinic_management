@@ -1,27 +1,27 @@
 <div style="color: green"><%= notice %></div>
+<div class="page-title-group">
+  <h1 class="page-title">Patients</h1>
+  <%= link_to "New patient", new_user_path, class: "button" %>
+</div>
 
-<h1>Patients</h1>
-
-<%= link_to "New patient", new_user_path %>
-
-<table class="table-body">
-  <thead>
+<table class="table-wrapper">
+  <thead class="table-head">
     <tr>
       <th class="table-head-cell">First name</th>
       <th class="table-head-cell">Last name</th>
       <th class="table-head-cell">Phone number</th>
       <th class="table-head-cell">Email</th>
-      <th class="table-head-cell">Functions</th>
+      <th class="table-head-cell"><%= icon('fa-regular', 'gear', "Functions") %></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="table-body">
     <% @users.each do |user| %>
-      <tr>
-        <td class="table-body-cell"><%= user.first_name %></td>
-        <td class="table-body-cell"><%= user.last_name %></td>
-        <td class="table-body-cell"><%= user.phone_number %></td>
-        <td class="table-body-cell"><%= user.email %></td>
-        <td class="table-body-cell">
+      <tr class="table-row">
+        <td class="table-cell"><%= user.first_name %></td>
+        <td class="table-cell"><%= user.last_name %></td>
+        <td class="table-cell"><%= user.phone_number %></td>
+        <td class="table-cell"><%= user.email %></td>
+        <td class="table-cell">
           <%= link_to icon('fa-regular', 'eye', "View"), user_path(user), class: "button-functions" %>
           <%= link_to icon('fa-regular', 'edit', "Edit"), edit_user_path(user), class: "button-functions" %>
           <%= link_to icon('fa-regular', 'trash-can', "Destroy"), user_path(user), data: { turbo_method: :delete,
